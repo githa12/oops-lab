@@ -1,30 +1,27 @@
-class A {
-    void display() {
+interface A {
+    default void display() {
         System.out.println("A");
     }
 }
 
-class B extends A {
-   
-    void display() {
+interface B extends A {
+    default void display() {
         System.out.println("B");
     }
 }
 
-class C extends A {
-    void display() {
+interface C extends A {
+    default void display() {
         System.out.println("C");
     }
 }
 
-class D extends B {
-}
-
-public class Diamond{
+class D implements B, C {
     public static void main(String[] args) {
         D d = new D();
-        d.display(); 
+        d.display(); // This will cause a compile-time error due to the diamond problem
     }
 }
+
 
 
